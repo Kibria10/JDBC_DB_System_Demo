@@ -132,8 +132,8 @@ public class JDBC {
 //                Statement stmt;
 //                PreparedStatement pss;
 //                stmt = con.createStatement();
-                System.out.println(userName);
-                System.out.println(pass);
+//                 System.out.println(userName);
+//                 System.out.println(pass);
 
                 scn.nextLine();
                 System.out.println("Please Enter Your New First Name:");
@@ -200,7 +200,9 @@ public class JDBC {
                     String lastName = rs.getString(3);
 
 
-                    ps = con.prepareStatement("DELETE FROM `user_information` WHERE Email = 'userName' AND Password = 'pass'");;
+                    ps = con.prepareStatement("DELETE FROM `user_information` WHERE Email = ? AND Password = ?");
+                    ps.setString(1, userName);
+                    ps.setString(2, pass);
                     ps.executeUpdate();
 
                     System.out.println("Hello " + firstName + " " + lastName + " " + "Your account is now being deleted. Goodbye! Adios.");
